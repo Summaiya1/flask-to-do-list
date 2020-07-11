@@ -1,0 +1,139 @@
+{% extends "structure.html" %}
+
+{% block main %}
+<style>
+
+#logout
+{
+  color:white !important;
+}
+</style>
+
+<div class="center">
+  
+    <a class="btn btn-secondary btn-lg" id="logout" href="/logout">Log Out</a> 
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+               Add new List 
+              </button>
+            </h2>
+          </div>
+      
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <form action="/newlist" method="post">
+                    <h5>Enter list name</h5>
+                    <input type="text" name="listname"></input><br>
+                    <h5>Enter list item</h5>
+                    <input type="text" name="listitem"></input><br>
+                    <button class="btn btn-primary">Add new list</button>
+                </form>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Add list items
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                 <div class="card-body">
+                    <form action="/newitem" method="post">
+                        <h5>Enter list name</h5>
+                        <input type="text" name="listname"></input><br>
+                        <h5>Add list item</h5>
+                        <input type="text" name="listitem"></input><br>
+                        <button class="btn btn-primary">Add list Item</button>
+                    </form>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Delete list item
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                 <div class="card-body">
+                    <form action="/deleteitem" method="post">
+                        <h5>Enter list name</h5>
+                        <input type="text" name="listname"></input><br>
+                        <h5>Enter list item</h5>
+                        <input type="text" name="listitem"></input><br>
+                        <button class="btn btn-primary">Delete list Item</button>
+                    </form>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Delete List
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                 <div class="card-body">
+                    <form action="/deletelist" method="post">
+                        <h5>Enter list name</h5>
+                        <input type="text" name="listname"></input><br>
+                        <button class="btn btn-primary">Delete List</button>
+                    </form>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingFive">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                Update list name
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                 <div class="card-body">
+                    <form action="/updatelistname" method="post">
+                        <h5>Enter list name</h5>
+                        <input type="text" name="Oldlistname"></input><br>
+                        <h5>Enter new list name</h5>
+                        <input type="text" name="Newlistname"></input><br>
+                        <button class="btn btn-primary">Update List name</button>
+                    </form>
+              </div>
+          </div>
+        </div>
+      </div>
+       <br>
+    
+    {% for items in list_dictionary %}
+        <br>
+        <div class="card" id="list">
+            <h5 class="card-header">{{items}}</h5>
+            <div class="card-body inline">
+        
+                {% for item in list_dictionary[items] %}
+                    <ul class="list-group">
+                      <li class="list-group-item" id="name"><input type="checkbox">{{item}}</li>
+                    </ul>
+                {% endfor %}   
+            </div>
+        </div> 
+   {% endfor %}
+   
+
+</div>
+
+{% endblock main %}
+ 
+
+

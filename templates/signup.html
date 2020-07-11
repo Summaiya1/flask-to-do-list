@@ -1,0 +1,33 @@
+{% extends "structure.html" %}
+
+{% block main %}
+
+<div id="signup">
+    <form action="/signup" method="post">
+      <div class="row">
+        <div class="col">
+          <input type="email" class="form-control" placeholder="Enter Email" name="email">
+        </div>
+        <div class="col">
+          <input type="password" class="form-control" placeholder="Enter Password" name="password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Enter Username" name="username">
+          </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Signup</button>
+        </div>
+      </div>
+
+    </form>
+</div>
+<div class="alert alert-primary" role="alert">
+    {{message}}
+</div>
+        
+   
+    
+
+{% endblock main %}

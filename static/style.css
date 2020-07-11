@@ -1,0 +1,14 @@
+#login
+{
+    margin-top:20px;
+}
+
+.center
+{
+   /* display:flex;
+   flex-direction:row;
+   flex-wrap:wrap; */
+   align-items: center;
+   text-align: center;
+   
+}
